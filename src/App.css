@@ -5,6 +5,12 @@ nav {
   padding: 1rem;
 }
 
+nav h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #419bf9;
+}
+
 nav ul {
   display: flex;
   justify-content: space-between;
