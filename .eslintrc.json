@@ -30,9 +30,6 @@
     ],
     "ignorePatterns": [
       "dist/",
-      "build/",
-      "Book.js",
-      "BookForm.js",
-      "BookList.js"
+      "build/"
     ]
   }
