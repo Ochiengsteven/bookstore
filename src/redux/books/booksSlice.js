@@ -1,5 +1,3 @@
-// src/redux/books/booksSlice.js
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { createSlice } from '@reduxjs/toolkit';
 
 const booksSlice = createSlice({
