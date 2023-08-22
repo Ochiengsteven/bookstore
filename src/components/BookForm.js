@@ -41,6 +41,7 @@ function BookForm({ onAdd }) {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className={titleError ? 'input-error' : ''}
         />
         {titleError && <div className="error">Please input the title</div>}
         <input
@@ -48,6 +49,7 @@ function BookForm({ onAdd }) {
           placeholder="Author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+          className={authorError ? 'input-error' : ''}
         />
         {authorError && <div className="error">Please input the author</div>}
         <button type="submit">Add Book</button>
