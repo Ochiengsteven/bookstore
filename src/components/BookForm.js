@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './css/bookform.css';
-import { addBookAsync } from '../redux/books/booksSlice';
+import { fetchBooks, addBookAsync } from '../redux/books/booksSlice';
 
 function BookForm() {
   const [title, setTitle] = useState('');
@@ -35,6 +35,7 @@ function BookForm() {
           category: 'fiction', // Set category to 'fiction'
           item_id: new Date().getTime().toString(), // Generate a unique item_id
         }));
+        dispatch(fetchBooks());
         setStatus('idle');
         setTitle('');
         setAuthor('');

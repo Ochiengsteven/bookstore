@@ -15,9 +15,9 @@ const BookList = ({ onDelete }) => {
 
   useEffect(() => {
     if (booksStatus === 'idle') {
-      dispatch(fetchBooks()); // Dispatch the fetchBooks action
+      dispatch(fetchBooks());
     }
-  }, [booksStatus, dispatch]);
+  }, [booksStatus, dispatch, books]);
 
   let content;
   if (booksStatus === 'loading') {
