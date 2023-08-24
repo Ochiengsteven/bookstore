@@ -6,7 +6,6 @@ import {
   selectAllBooks, getBooksStatus, getBooksError, fetchBooks,
 } from '../redux/books/booksSlice';
 
-// eslint-disable-next-line no-unused-vars
 const BookList = ({ onDelete }) => {
   const dispatch = useDispatch(); // Get the dispatch function from Redux
   const books = useSelector(selectAllBooks); // Get the books array from Redux state

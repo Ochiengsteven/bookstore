@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-catch */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -13,7 +12,6 @@ const initialState = {
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   try {
     const response = await axios.get(posturl);
-    // eslint-disable-next-line max-len
     const mappedData = Object.entries(response.data).flatMap(([id, booksArray]) => booksArray.map((book) => ({
       item_id: id,
       title: book.title,

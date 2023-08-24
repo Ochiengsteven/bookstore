@@ -11,8 +11,7 @@ const Books = () => {
 
   const handleAddBook = async (newBook) => {
     try {
-      // eslint-disable-next-line max-len
-      await dispatch(addBookAsync(newBook)); // Dispatch the addBookAsync action with the new book data
+      await dispatch(addBookAsync(newBook));
     } catch (error) {
       console.error('Error adding book:', error);
     }
