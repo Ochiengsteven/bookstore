@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -10,13 +11,11 @@ const initialState = {
 };
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
-  // eslint-disable-next-line no-useless-catch
   try {
     const response = await axios.get(posturl);
-    // Map the response data to the desired format
     // eslint-disable-next-line max-len
     const mappedData = Object.entries(response.data).flatMap(([id, booksArray]) => booksArray.map((book) => ({
-      item_id: id, // Use the book ID as the item_id
+      item_id: id,
       title: book.title,
       author: book.author,
       category: book.category,
@@ -30,30 +29,25 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 export const addBookAsync = createAsyncThunk('books/addBookAsync', async (book) => {
   try {
     const response = await axios.post(posturl, book);
-    return response.data;
+    return response.data; // The response should contain the added book details
   } catch (error) {
-    return error;
+    throw error;
   }
 });
 
 export const deleteBookAsync = createAsyncThunk('books/deleteBookAsync', async (id) => {
   try {
-    const response = await axios.delete(`${posturl}/${id}`);
-    return response.data;
+    await axios.delete(`${posturl}/${id}`);
+    return id; // Return the deleted book's id
   } catch (error) {
-    return error;
+    throw error;
   }
 });
 
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    addBook: (state, action) => {
-      state.books.push(action.payload);
-    },
-    removeBook: (state, action) => state.books.filter((book) => book.id !== action.payload),
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchBooks.pending, (state) => {
@@ -68,9 +62,10 @@ const booksSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addBookAsync.fulfilled, (state, action) => {
-        // eslint-disable-next-line no-console
-        console.log(action.payload);
         state.books.push(action.payload);
+      })
+      .addCase(deleteBookAsync.fulfilled, (state, action) => {
+        state.books = state.books.filter((book) => book.item_id !== action.payload);
       });
   },
 });
@@ -78,5 +73,5 @@ const booksSlice = createSlice({
 export const selectAllBooks = (state) => state.books.books;
 export const getBooksError = (state) => state.books.error;
 export const getBooksStatus = (state) => state.books.status;
-export const { addBook, removeBook } = booksSlice.actions;
+
 export default booksSlice.reducer;

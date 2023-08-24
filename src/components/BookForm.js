@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { bindActionCreators } from 'redux';
 import './css/bookform.css';
-import { addBook } from '../redux/books/booksSlice';
+import { addBookAsync } from '../redux/books/booksSlice';
 
 function BookForm() {
   const [title, setTitle] = useState('');
@@ -13,7 +11,6 @@ function BookForm() {
   const [status, setStatus] = useState('idle');
 
   const dispatch = useDispatch();
-  const boundAddBook = bindActionCreators(addBook, dispatch);
 
   const canSave = [title, author].every(Boolean) && status === 'idle';
 
@@ -32,9 +29,12 @@ function BookForm() {
     if (canSave) {
       setStatus('pending');
       try {
-        await boundAddBook({
-          item_id: new Date().getTime().toString(), title, author, category: 'fiction',
-        });
+        await dispatch(addBookAsync({
+          title,
+          author,
+          category: 'fiction', // Set category to 'fiction'
+          item_id: new Date().getTime().toString(), // Generate a unique item_id
+        }));
         setStatus('idle');
         setTitle('');
         setAuthor('');
@@ -64,7 +64,9 @@ function BookForm() {
           className={authorError ? 'input-error' : ''}
         />
         {authorError && <div className="error">Please input the author</div>}
-        <button type="submit">Add Book</button>
+        <button type="submit" disabled={!canSave}>
+          {status === 'pending' ? 'Adding...' : 'Add Book'}
+        </button>
       </form>
     </div>
   );
