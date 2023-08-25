@@ -1,41 +1,47 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import './css/bookform.css';
+import { fetchBooks, addBookAsync } from '../redux/books/booksSlice';
 
-function BookForm({ onAdd }) {
+function BookForm() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [titleError, setTitleError] = useState(false);
   const [authorError, setAuthorError] = useState(false);
+  const [status, setStatus] = useState('idle');
 
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+
+  const canSave = [title, author].every(Boolean) && status === 'idle';
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Trim and validate inputs
-    const trimmedTitle = title.trim();
-    const trimmedAuthor = author.trim();
-
-    if (!trimmedTitle) {
-      setTitleError(true);
-    } else {
+    if (title) {
       setTitleError(false);
-    }
-
-    if (!trimmedAuthor) {
-      setAuthorError(true);
     } else {
-      setAuthorError(false);
+      setTitleError(true);
     }
-
-    if (trimmedTitle && trimmedAuthor) {
-      const newBook = {
-        title: trimmedTitle,
-        author: trimmedAuthor,
-        id: new Date().getTime().toString(),
-      };
-      onAdd(newBook);
-      setTitle('');
-      setAuthor('');
+    if (author) {
+      setAuthorError(false);
+    } else {
+      setAuthorError(true);
+    }
+    if (canSave) {
+      setStatus('pending');
+      try {
+        await dispatch(addBookAsync({
+          title,
+          author,
+          category: 'fiction', // Set category to 'fiction'
+          item_id: new Date().getTime().toString(), // Generate a unique item_id
+        }));
+        dispatch(fetchBooks());
+        setStatus('idle');
+        setTitle('');
+        setAuthor('');
+      } catch (err) {
+        setStatus('idle');
+      }
     }
   };
 
@@ -59,14 +65,12 @@ function BookForm({ onAdd }) {
           className={authorError ? 'input-error' : ''}
         />
         {authorError && <div className="error">Please input the author</div>}
-        <button type="submit">Add Book</button>
+        <button type="submit" disabled={!canSave}>
+          {status === 'pending' ? 'Adding...' : 'Add Book'}
+        </button>
       </form>
     </div>
   );
 }
-
-BookForm.propTypes = {
-  onAdd: PropTypes.func.isRequired,
-};
 
 export default BookForm;
