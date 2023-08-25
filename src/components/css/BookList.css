@@ -42,6 +42,32 @@
   border-right: 1px solid #419bf9;
 }
 
-.book-progress svg{
-  height: 80%;
+.book-progress {
+  min-width: 30vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 2px solid #ccc;
+  padding-right: 2rem;
+}
+
+.progress-text {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  padding: 6px;
+}
+
+.progress-text :nth-child(2) {
+  color: #818181;
+}
+
+.progress-text :nth-child(1) {
+  color: #000;
+  font-size: 1.9rem;
 }

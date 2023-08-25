@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { CircularProgressbar } from 'react-circular-progressbar';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-circular-progressbar/dist/styles.css';
+import Chapter from './chapter';
 
 const Book = (
   {
@@ -14,7 +15,7 @@ const Book = (
     onDelete(itemId);
   };
 
-  const percentage = 66;
+  const percentage = 76;
 
   const progressStyles = {
     root: { width: '130px', height: '130px' },
@@ -51,12 +52,20 @@ const Book = (
           <button type="button">Edit</button>
         </div>
       </div>
-      <div className="book-progress">
-        <CircularProgressbar
-          value={percentage}
-          text={`${percentage}%`}
-          styles={progressStyles} // Apply the custom styles
-        />
+      <div className="book-details">
+        <div className="book-progress">
+          <div className="bar">
+            <CircularProgressbar
+              value={percentage}
+              styles={progressStyles} // Apply the custom styles
+            />
+            <div className="progress-text">
+              <span>{`${percentage}%`}</span>
+              <span>Completed</span>
+            </div>
+          </div>
+          <Chapter />
+        </div>
       </div>
     </div>
   );
