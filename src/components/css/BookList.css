@@ -41,3 +41,7 @@
   transition: all 0.3s ease-in-out;
   border-right: 1px solid #419bf9;
 }
+
+.book-progress svg{
+  height: 80%;
+}
