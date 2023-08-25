@@ -11,21 +11,28 @@ function BookForm({ onAdd }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate inputs
-    if (!title) {
+    // Trim and validate inputs
+    const trimmedTitle = title.trim();
+    const trimmedAuthor = author.trim();
+
+    if (!trimmedTitle) {
       setTitleError(true);
     } else {
       setTitleError(false);
     }
 
-    if (!author) {
+    if (!trimmedAuthor) {
       setAuthorError(true);
     } else {
       setAuthorError(false);
     }
 
-    if (title && author) {
-      const newBook = { title, author, id: new Date().getTime().toString() };
+    if (trimmedTitle && trimmedAuthor) {
+      const newBook = {
+        title: trimmedTitle,
+        author: trimmedAuthor,
+        id: new Date().getTime().toString(),
+      };
       onAdd(newBook);
       setTitle('');
       setAuthor('');
@@ -41,6 +48,7 @@ function BookForm({ onAdd }) {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className={titleError ? 'input-error' : ''}
         />
         {titleError && <div className="error">Please input the title</div>}
         <input
@@ -48,6 +56,7 @@ function BookForm({ onAdd }) {
           placeholder="Author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+          className={authorError ? 'input-error' : ''}
         />
         {authorError && <div className="error">Please input the author</div>}
         <button type="submit">Add Book</button>
