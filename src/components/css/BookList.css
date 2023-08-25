@@ -1,0 +1,43 @@
+.book-list {
+  margin: 70px auto;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  height: 160px;
+  margin: 10px auto;
+  padding: 20px;
+
+  /* position: relative; */
+  transition: all 0.5s ease-in-out;
+  width: 92vw;
+}
+
+.book-category {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #818181;
+}
+
+.author-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #419bf9;
+}
+
+.book-actions button {
+  background: none;
+  border: none;
+  color: #419bf9;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 0.7rem 0.5rem 0.2rem;
+  transition: all 0.3s ease-in-out;
+  border-right: 1px solid #419bf9;
+}

@@ -29,10 +29,13 @@ function BookForm() {
     if (canSave) {
       setStatus('pending');
       try {
+        const categories = ['Fiction', 'Mystery', 'Sci-Fi', 'Fantasy', 'Romance', 'Horror'];
+        const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+
         await dispatch(addBookAsync({
           title,
           author,
-          category: 'fiction', // Set category to 'fiction'
+          category: randomCategory, // Set a random category
           item_id: new Date().getTime().toString(), // Generate a unique item_id
         }));
         dispatch(fetchBooks());

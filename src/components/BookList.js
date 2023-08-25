@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux'; // Import useSelector from react-redux
 import Book from './Book';
+import './css/BookList.css';
 import {
   selectAllBooks, getBooksStatus, getBooksError, fetchBooks,
 } from '../redux/books/booksSlice';
@@ -26,6 +27,7 @@ const BookList = ({ onDelete }) => {
       <Book
         key={book.item_id}
         itemId={book.item_id}
+        category={book.category}
         title={book.title}
         author={book.author}
         onDelete={onDelete}
@@ -37,7 +39,6 @@ const BookList = ({ onDelete }) => {
 
   return (
     <div className="book-list">
-      <h2>Books</h2>
       {content}
     </div>
   );

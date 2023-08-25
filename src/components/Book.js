@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Book = (
   {
-    itemId, title, author, onDelete,
+    itemId, category, title, author, onDelete,
   },
 ) => {
   const handleDelete = () => {
@@ -12,14 +12,20 @@ const Book = (
 
   return (
     <div className="book">
-      <h2>{title}</h2>
-      <div className="book-details">
-        By:
-        <p>
-          {author}
-        </p>
+      <div className="action">
+        <div className="book-details">
+          <span className="book-category">{category}</span>
+          <h2>{title}</h2>
+          <p className="author-name">
+            {author}
+          </p>
+        </div>
+        <div className="book-actions">
+          <button type="button">Comments</button>
+          <button type="button" onClick={handleDelete}>Remove</button>
+          <button type="button">Edit</button>
+        </div>
       </div>
-      <button type="button" onClick={handleDelete}>Delete</button>
     </div>
   );
 };
@@ -27,6 +33,7 @@ const Book = (
 // prop validations
 Book.propTypes = {
   itemId: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,

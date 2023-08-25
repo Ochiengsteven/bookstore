@@ -1,0 +1,27 @@
+/* Nav.css */
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 60px;
+}
+
+.user-icon {
+  color: #419bf9;
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #419bf9;
+  margin-left: 60px;
+}
+
+.active {
+  color: black;
+}
