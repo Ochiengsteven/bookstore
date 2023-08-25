@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { CircularProgressbar } from 'react-circular-progressbar';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-circular-progressbar/dist/styles.css';
 import Chapter from './chapter';
 
