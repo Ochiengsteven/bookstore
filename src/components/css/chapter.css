@@ -2,6 +2,23 @@
   margin-right: 4rem;
 }
 
+p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #818181;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #121212;
+}
+
+.chapter-text p,
+.chapter-text h3 {
+  margin: 0 0 2px 0;
+}
+
 button {
   background: #419bf9;
   border: none;
@@ -12,16 +29,4 @@ button {
   border-radius: 2px;
   padding: 0.7rem;
   transition: all 0.3s ease-in-out;
-}
-
-p {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #818181;
-}
-
-h3 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #000;
 }

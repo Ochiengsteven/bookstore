@@ -1,6 +1,6 @@
 .border-up {
   display: inline-block;
-  width: 92vw;
+  width: 75rem;
   height: 2px;
   background-color: lightgray;
   margin: 0 auto;
@@ -12,7 +12,7 @@
 }
 
 .book-form {
-  width: 92vw;
+  width: 75rem;
   margin: 0 auto;
 }
 
