@@ -1,3 +1,16 @@
+.border-up {
+  display: inline-block;
+  width: 92vw;
+  height: 2px;
+  background-color: lightgray;
+  margin: 0 auto;
+}
+
+.border-container {
+  display: flex;
+  align-items: center;
+}
+
 .book-form {
   width: 92vw;
   margin: 0 auto;
@@ -30,6 +43,12 @@
   border: 1px solid #ccc;
   border-radius: 2px;
   margin-right: 1rem;
+}
+
+.book-form form input::placeholder {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #818181;
 }
 
 .book-form form button {
