@@ -1,8 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f5f6fa;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  background: #fff;
 }
 
 nav h1 {
@@ -25,6 +33,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #2e333d;
-  font-size: 1.2rem;
+  color: #8f8f8f;
+  font-size: 1.3rem;
+  font-weight: 600;
 }

@@ -27,9 +27,8 @@ const Books = () => {
 
   return (
     <div>
-      <h2>Books</h2>
-      <BookForm onAdd={handleAddBook} />
       <BookList books={books} onDelete={handleDeleteBook} />
+      <BookForm onAdd={handleAddBook} />
     </div>
   );
 };
