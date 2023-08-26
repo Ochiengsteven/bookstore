@@ -47,13 +47,15 @@
 }
 
 .book-actions button {
+  align-items: center;
+  height: 1.8rem;
   background: none;
   border: none;
   color: #4386bf;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
-  padding: 0.5rem 0.7rem 0.5rem 0.2rem;
+  margin: 0.5rem 0.7rem 0.5rem 0;
   transition: all 0.3s ease-in-out;
   border-right: 1px solid #4386bf;
 }

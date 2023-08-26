@@ -1,5 +1,6 @@
 .chapter-text {
   margin-right: 4rem;
+  margin-left: 60px;
 }
 
 p {
@@ -29,4 +30,8 @@ button {
   border-radius: 2px;
   padding: 0.7rem;
   transition: all 0.3s ease-in-out;
+}
+
+.chapter-text button {
+  margin-top: 2rem;
 }
