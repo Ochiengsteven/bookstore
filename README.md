@@ -157,14 +157,14 @@ Example:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FUTURE FEATURES -->
+<!-- FUTURE FEATURES
 
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [ ] **Adding the calculator functionality of perfoming arithmetic solutions**
 - [ ] **modify the page styling**
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>  -->
 
 <!-- CONTRIBUTING -->
 
